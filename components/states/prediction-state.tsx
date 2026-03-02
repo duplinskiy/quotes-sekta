@@ -190,7 +190,12 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
           </div>
         </motion.div>
 
-        <div className="relative max-w-lg w-full mx-auto">
+        <motion.div
+          className="relative max-w-lg w-full mx-auto"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
           <div className="relative">
             <div
               className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform scale-105"
@@ -247,7 +252,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
               Ещё цитату
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         <motion.div
           className="mt-12 text-center space-y-4"
