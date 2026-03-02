@@ -99,13 +99,16 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
   const [showInstructions, setShowInstructions] = useState(false)
   const playButtonSound = useButtonSound()
 
+  const quoteId = quoteUrl.match(/\/quotes\/(\d+)\.jpg/)?.[1] || "1"
+  const quotePageUrl = `https://www.quotes-sekta.ru/quote/${quoteId}`
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
           title: "Цитаты Артура Сита",
           text: "Посмотри, какие ублюдские цитаты Артура Сита здесь собраны!",
-          url: window.location.href,
+          url: quotePageUrl,
         })
       } catch (error) {
         console.log("Error sharing:", error)
@@ -114,12 +117,12 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
   }
 
   const shareToSocial = (platform: string) => {
-    const siteUrl = encodeURIComponent(window.location.href)
+    const shareUrl = encodeURIComponent(quotePageUrl)
     const text = encodeURIComponent("Посмотри, какие ублюдские цитаты Артура Сита здесь собраны!")
 
     const shareUrls: Record<string, string> = {
-      telegram: `https://t.me/share/url?url=${siteUrl}&text=${text}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}&quote=${text}`,
+      telegram: `https://t.me/share/url?url=${shareUrl}&text=${text}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${text}`,
     }
 
     if (platform === "instagram") {
@@ -208,38 +211,38 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
             />
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 px-4">
+          <div className="mt-8 grid grid-cols-4 gap-2 px-4">
             <Button
               variant="outline"
-              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full"
+              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full px-2"
               onClick={() => shareToSocial("telegram")}
             >
-              <Send className="mr-2 h-4 w-4" />
-              Telegram
+              <Send className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline ml-1 truncate">Telegram</span>
             </Button>
             <Button
               variant="outline"
-              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full"
+              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full px-2"
               onClick={() => shareToSocial("facebook")}
             >
-              <Facebook className="mr-2 h-4 w-4" />
-              Facebook
+              <Facebook className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline ml-1 truncate">Facebook</span>
             </Button>
             <Button
               variant="outline"
-              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full"
+              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full px-2"
               onClick={() => shareToSocial("instagram")}
             >
-              <Instagram className="mr-2 h-4 w-4" />
-              Instagram
+              <Instagram className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline ml-1 truncate">Instagram</span>
             </Button>
             <Button
               variant="outline"
-              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full"
+              className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full px-2"
               onClick={handleShare}
             >
-              <Share2 className="mr-2 h-4 w-4" />
-              Share
+              <Share2 className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline ml-1 truncate">Share</span>
             </Button>
           </div>
 
