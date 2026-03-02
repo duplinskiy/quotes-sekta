@@ -14,8 +14,7 @@ export function TransitionState({ onComplete }: TransitionStateProps) {
   useEffect(() => {
     if (videoRef.current && notificationAudioRef.current) {
       videoRef.current.volume = 0.5
-      videoRef.current.playbackRate = 1.35
-      notificationAudioRef.current.volume = 0.1
+      notificationAudioRef.current.volume = 0.1 // Set volume to 10%
 
       const playMedia = () => {
         videoRef.current?.play().catch((error) => console.error("Video playback failed:", error))
@@ -31,7 +30,7 @@ export function TransitionState({ onComplete }: TransitionStateProps) {
               notificationAudioRef.current?.addEventListener(
                 "ended",
                 () => {
-                  setTimeout(onComplete, 200)
+                  onComplete()
                 },
                 { once: true },
               )
@@ -72,13 +71,13 @@ export function TransitionState({ onComplete }: TransitionStateProps) {
         className="absolute inset-0 flex items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 1, delay: 1 }}
       >
         <motion.h2
           className="text-2xl md:text-4xl text-[#676767] text-center font-cormorant px-6 py-2 bg-white/30 backdrop-blur-sm rounded-lg shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           Книга Мерзостей Силы выбирает твое послание
         </motion.h2>
