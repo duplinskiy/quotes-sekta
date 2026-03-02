@@ -173,7 +173,7 @@ export function PredictionState({ quoteUrl }: PredictionStateProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Послание для от Артура Сила готово, теперь ты можешь поставить его на обои своего телефона, чтобы глубже понять его суть
+              Послание от Артура Сила готово, теперь ты можешь поставить его на обои своего телефона, чтобы глубже понять его суть
             </motion.h2>
             <motion.p
               className="text-lg leading-snug mb-4"
