@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram, Share2, Send, Check, X, RefreshCw } from "lucide-react"
 import Link from "next/link"
@@ -97,11 +97,7 @@ const ScrollArrow = () => {
 
 export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps) {
   const [showInstructions, setShowInstructions] = useState(false)
-  const { scrollYProgress } = useScroll()
   const playButtonSound = useButtonSound()
-
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 0.3], [0.8, 1])
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -194,7 +190,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
           </div>
         </motion.div>
 
-        <motion.div style={{ opacity, scale }} className="relative max-w-lg w-full mx-auto">
+        <div className="relative max-w-lg w-full mx-auto">
           <div className="relative">
             <div
               className="absolute inset-0 bg-black/20 rounded-2xl blur-xl transform scale-105"
@@ -251,7 +247,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
               Ещё цитату
             </Button>
           </div>
-        </motion.div>
+        </div>
 
         <motion.div
           className="mt-12 text-center space-y-4"
