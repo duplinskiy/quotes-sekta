@@ -162,7 +162,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
         }}
       >
         <motion.div
-          className="max-w-2xl mx-auto text-center space-y-6 mb-8 pt-8 text-white"
+          className="max-w-4xl w-full mx-auto text-center space-y-6 mb-8 pt-8 text-white px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}
@@ -267,7 +267,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
               Перейти на сайт wiki
             </Link>
           </Button>
-          <p className="text-white leading-snug">Получи Великое Знание о Человеке, которое она хранит</p>
+          <p className="text-white leading-snug">Получи Великое Знание о Манипуляциях и Сектах</p>
         </motion.div>
       </div>
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quotes-sekta.vercel.app/sitemap.xml
