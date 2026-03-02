@@ -67,7 +67,7 @@ const ScrollArrow = () => {
 
   return (
     <motion.div
-      className="fixed bottom-16 left-1/2 transform -translate-x-1/2 z-50 md:bottom-1/3"
+      className="fixed bottom-16 left-6 z-50 md:bottom-1/3"
       initial={{ opacity: 1 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}
@@ -161,14 +161,14 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
         }}
       >
         <motion.div
-          className="max-w-4xl w-full mx-auto text-center space-y-6 mb-8 pt-8 text-white px-4"
+          className="max-w-4xl w-full mx-auto text-center space-y-3 mb-4 pt-4 text-white px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}
         >
-          <div className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-2xl shadow-lg">
+          <div className="bg-gray-800/30 backdrop-blur-sm p-4 rounded-2xl shadow-lg">
             <motion.h2
-              className="text-2xl font-semibold leading-none mb-4"
+              className="text-xl font-semibold leading-tight mb-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -176,14 +176,14 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
               Послание от Артура Сила готово, теперь ты можешь поставить его на обои своего телефона, чтобы глубже понять его суть
             </motion.h2>
             <motion.p
-              className="text-lg leading-snug mb-4"
+              className="text-base leading-snug mb-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               А еще поделись этим посланием в соцсетях:
             </motion.p>
-            <div className="text-left space-y-3 pl-4">
+            <div className="text-left space-y-2 pl-4 text-sm">
               <AnimatedCheckItem>Сохрани картинку</AnimatedCheckItem>
               <AnimatedCheckItem>Выложи в сторис</AnimatedCheckItem>
               <AnimatedCheckItem>
@@ -255,10 +255,12 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
               Ещё цитату
             </Button>
           </div>
+
+          <p className="text-white/60 text-sm mt-4 text-center">или</p>
         </motion.div>
 
         <motion.div
-          className="mt-12 text-center space-y-4"
+          className="mt-2 text-center space-y-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.5 }}
