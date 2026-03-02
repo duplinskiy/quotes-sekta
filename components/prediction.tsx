@@ -25,6 +25,11 @@ export function Prediction() {
     transition("prediction")
   }
 
+  const handleNextQuote = () => {
+    setSelectedQuote(getRandomQuoteUrl())
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
     <div className="relative w-full min-h-screen bg-white">
       <BackgroundMusic />
@@ -74,7 +79,7 @@ export function Prediction() {
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
-            <PredictionState quoteUrl={selectedQuote} />
+            <PredictionState quoteUrl={selectedQuote} onNextQuote={handleNextQuote} />
           </motion.div>
         )}
       </AnimatePresence>

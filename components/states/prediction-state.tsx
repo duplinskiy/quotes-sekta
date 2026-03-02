@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Facebook, Instagram, Share2, Twitter, Check, X } from "lucide-react"
+import { Facebook, Instagram, Share2, Send, Check, X, RefreshCw } from "lucide-react"
 import Link from "next/link"
 import { useButtonSound } from "../button-sound"
 
 interface PredictionStateProps {
   quoteUrl: string
+  onNextQuote: () => void
 }
 
 const AnimatedCheckItem = ({ children }: { children: React.ReactNode }) => (
@@ -94,7 +95,7 @@ const ScrollArrow = () => {
   )
 }
 
-export function PredictionState({ quoteUrl }: PredictionStateProps) {
+export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps) {
   const [showInstructions, setShowInstructions] = useState(false)
   const { scrollYProgress } = useScroll()
   const playButtonSound = useButtonSound()
@@ -106,9 +107,9 @@ export function PredictionState({ quoteUrl }: PredictionStateProps) {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Мое послание Силы",
-          text: "Посмотри, какое послание Силы я получил!",
-          url: quoteUrl,
+          title: "Цитаты Артура Сита",
+          text: "Посмотри, какие ублюдские цитаты Артура Сита здесь собраны!",
+          url: window.location.href,
         })
       } catch (error) {
         console.log("Error sharing:", error)
@@ -117,18 +118,18 @@ export function PredictionState({ quoteUrl }: PredictionStateProps) {
   }
 
   const shareToSocial = (platform: string) => {
-    const url = encodeURIComponent(quoteUrl)
-    const text = encodeURIComponent("Посмотри, какое послание Силы я получил!")
+    const siteUrl = encodeURIComponent(window.location.href)
+    const text = encodeURIComponent("Посмотри, какие ублюдские цитаты Артура Сита здесь собраны!")
 
-    const shareUrls = {
-      twitter: `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`,
+    const shareUrls: Record<string, string> = {
+      telegram: `https://t.me/share/url?url=${siteUrl}&text=${text}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}&quote=${text}`,
     }
 
     if (platform === "instagram") {
       setShowInstructions(true)
     } else {
-      window.open(shareUrls[platform as keyof typeof shareUrls], "_blank")
+      window.open(shareUrls[platform], "_blank")
     }
   }
 
@@ -210,10 +211,10 @@ export function PredictionState({ quoteUrl }: PredictionStateProps) {
             <Button
               variant="outline"
               className="bg-black/20 backdrop-blur-md hover:bg-black/30 border-white/20 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all w-full"
-              onClick={() => shareToSocial("twitter")}
+              onClick={() => shareToSocial("telegram")}
             >
-              <Twitter className="mr-2 h-4 w-4" />
-              Twitter
+              <Send className="mr-2 h-4 w-4" />
+              Telegram
             </Button>
             <Button
               variant="outline"
@@ -238,6 +239,16 @@ export function PredictionState({ quoteUrl }: PredictionStateProps) {
             >
               <Share2 className="mr-2 h-4 w-4" />
               Share
+            </Button>
+          </div>
+
+          <div className="mt-6 px-4">
+            <Button
+              className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-none font-normal text-lg rounded-xl h-14 shadow-lg hover:shadow-xl transition-all"
+              onClick={onNextQuote}
+            >
+              <RefreshCw className="mr-2 h-5 w-5" />
+              Ещё цитату
             </Button>
           </div>
         </motion.div>
