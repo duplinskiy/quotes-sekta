@@ -256,7 +256,7 @@ export function PredictionState({ quoteUrl, onNextQuote }: PredictionStateProps)
             </Button>
           </div>
 
-          <p className="text-white/60 text-sm mt-4 text-center">или</p>
+          <p className="text-white leading-snug mt-4 text-center">или</p>
         </motion.div>
 
         <motion.div
