@@ -44,33 +44,28 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  metadataBase: new URL("https://www.quotes-sekta.ru"),
   alternates: {
-    canonical: "https://quotes-sekta.vercel.app",
+    canonical: "/",
   },
   openGraph: {
     title: "Цитаты Артура Сита — скриншоты из чатов секты",
     description:
-      "Настоящие цитаты Артура Сита (Артура Силы) из внутренних чатов и личных переписок. Получи рандомную цитату и убедись сам.",
+      "Настоящие цитаты Артура Сита (Артура Силы) из внутренних чатов и личных переписок.",
+    url: "https://www.quotes-sekta.ru/",
     type: "website",
     locale: "ru_RU",
     siteName: "Цитаты Артура Сита",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-qKbEqY4zz0u1dDWo4TmSssXcpze5AB.png",
+        url: "https://www.quotes-sekta.ru/og/quotes-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Цитаты Артура Сита — скриншоты из чатов секты",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Цитаты Артура Сита — скриншоты из чатов секты",
-    description:
-      "Настоящие цитаты Артура Сита (Артура Силы) из внутренних чатов и личных переписок.",
-    images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-qKbEqY4zz0u1dDWo4TmSssXcpze5AB.png",
-    ],
   },
   robots: {
     index: true,

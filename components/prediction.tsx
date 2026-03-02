@@ -39,7 +39,6 @@ export function Prediction() {
             key="initial"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
@@ -51,7 +50,6 @@ export function Prediction() {
             key="intro"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
@@ -63,7 +61,6 @@ export function Prediction() {
             key="transition"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
@@ -75,7 +72,6 @@ export function Prediction() {
             key="prediction"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >

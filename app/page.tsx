@@ -6,7 +6,7 @@ const jsonLd = {
   name: "Цитаты Артура Сита (Артура Силы)",
   description:
     "Настоящие цитаты Артура Сита (Артура Силы) — скриншоты из внутренних чатов и личных переписок человека, который выдает себя за гуру по осознанности.",
-  url: "https://quotes-sekta.vercel.app",
+  url: "https://www.quotes-sekta.ru",
   inLanguage: "ru",
   author: {
     "@type": "Organization",
