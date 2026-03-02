@@ -22,18 +22,17 @@ export function TransitionState({ onComplete }: TransitionStateProps) {
 
       playMedia()
 
+      let cutoffTimer: ReturnType<typeof setTimeout>
+
       const handleVideoEnded = () => {
         if (notificationAudioRef.current) {
           notificationAudioRef.current
             .play()
             .then(() => {
-              notificationAudioRef.current?.addEventListener(
-                "ended",
-                () => {
-                  onComplete()
-                },
-                { once: true },
-              )
+              const duration = notificationAudioRef.current?.duration || 2
+              cutoffTimer = setTimeout(() => {
+                onComplete()
+              }, (duration / 2) * 1000)
             })
             .catch((error) => console.error("Audio playback failed:", error))
         }
@@ -42,6 +41,7 @@ export function TransitionState({ onComplete }: TransitionStateProps) {
       videoRef.current.addEventListener("ended", handleVideoEnded)
 
       return () => {
+        clearTimeout(cutoffTimer)
         if (videoRef.current) {
           videoRef.current.removeEventListener("ended", handleVideoEnded)
         }
